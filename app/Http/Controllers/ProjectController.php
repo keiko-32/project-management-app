@@ -127,6 +127,13 @@ class ProjectController extends Controller
             ->with('success', '案件を更新しました。');
     }
 
+    public function show(Project $project)
+    {
+        // $projectにはすでに該当す１件のデータあり
+        // 存在しないIDの場合、自動的に４０４エラー
+        return view('projects.show', compact('project'));
+    }
+
     public function destroy(Project $project)
     {
         $this->authorize('delete', $project);
